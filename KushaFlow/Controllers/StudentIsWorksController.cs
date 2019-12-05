@@ -91,7 +91,7 @@ namespace KushaFlow.Controllers
             return PhysicalFile(file_path, studentIsWork.WorkFormat, studentIsWork.WorkName);
         }
 
-        /*
+
         // GET: StudentIsWorks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -107,89 +107,10 @@ namespace KushaFlow.Controllers
                 return NotFound();
             }
 
+            string link = "http://kushaflow.ru/StudentIsWorks/Details/";
+            ViewBag.LinkToWork = link + studentIsWork.Id;
             return View(studentIsWork);
         }
-
-        // GET: StudentIsWorks/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var studentIsWork = await _context.StudentIsWork.FindAsync(id);
-            if (studentIsWork == null)
-            {
-                return NotFound();
-            }
-            return View(studentIsWork);
-        }
-        
-        // POST: StudentIsWorks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Category,WorkName,WorkPath,WorkFormat,UploadDate")] StudentIsWork studentIsWork)
-        {
-            if (id != studentIsWork.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(studentIsWork);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StudentIsWorkExists(studentIsWork.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(studentIsWork);
-        }
-
-        // GET: StudentIsWorks/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var studentIsWork = await _context.StudentIsWork
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (studentIsWork == null)
-            {
-                return NotFound();
-            }
-
-            return View(studentIsWork);
-        }
-
-        // POST: StudentIsWorks/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var studentIsWork = await _context.StudentIsWork.FindAsync(id);
-            _context.StudentIsWork.Remove(studentIsWork);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        */
         private bool StudentIsWorkExists(int id)
         {
             return _context.StudentIsWork.Any(e => e.Id == id);

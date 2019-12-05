@@ -29,40 +29,35 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkFormat)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.UploadDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DownloadsNum)
+            </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkFormat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UploadDate)
-                </td>
-                <td>
-                    <a asp-action="Download" asp-route-id="@item.Id">Скачать</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadsNum)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

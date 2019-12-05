@@ -1,54 +1,69 @@
 ﻿@model KushaFlow.Models.StudentIsWork
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Подробности";
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<h1>Details</h1>
+<h1>@Html.DisplayFor(model => model.Title)</h1>
 
 <div>
-    <h4>StudentIsWork</h4>
+    <h4>@Html.DisplayFor(model => model.Category)</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WorkName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WorkName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WorkPath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WorkPath)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.WorkFormat)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.WorkFormat)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UploadDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UploadDate)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownloadsNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownloadsNum)
+        </dd>
+        <dt class="col-sm-2">
+            Ссылка
+        </dt>
+        <dd class="col-sm-10">
+            <input id="link" value="@ViewBag.LinkToWork" readonly />
+        </dd>
     </dl>
+
+
 </div>
+<br />
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Download" asp-route-id="@Model.Id" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-download-alt"></span> Скачать
+    </a>
+    <button type="button" class="btn btn-default btn-sm" onclick="copyLink()">
+        <span class="glyphicon glyphicon-copy"></span>Скопировать ссылку
+    </button>
+    <a asp-action="Index">Назад</a>
 </div>
+
+
+
+<script>
+    function copyLink() {
+        /* Get the text field */
+        var copyText = document.getElementById("link");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
+</script>

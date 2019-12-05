@@ -13,7 +13,7 @@ namespace KushaFlow.Models
         [Display(Name ="Название")]
         public string Title { get; set; }
         
-        [Display(Name ="Категория")]
+        [Display(Name ="Описание")]
         public string Category { get; set; }
 
         public string WorkName { get; set; }
@@ -27,6 +27,29 @@ namespace KushaFlow.Models
         public DateTime UploadDate { get; set; }
         
         public IEnumerable<WorkDownload> WorkDownloads { get; set; }
-        
+
+        [Display(Name = "Скачиваний")]
+        public int DownloadsNum
+        {
+
+            get
+            {
+                try
+                {
+                    int x = WorkDownloads.ToList().Count;
+                    return x;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+            set
+            {
+
+            }
+        }
+
+
     }
 }
