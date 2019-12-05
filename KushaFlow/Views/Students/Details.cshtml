@@ -4,7 +4,6 @@
     Layout = null;
 }
 
-
 <div style="text-align:center">
     <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
     <a asp-action="Index">Назад</a>
@@ -54,10 +53,10 @@
                             <div class="hero-info">
                                 <h2>Информация</h2>
                                 <ul>
-                                    <li><span>Институт</span>@Html.DisplayFor(model => model.Institute)</li>
-                                    <li><span>Кафедра</span>@Html.DisplayFor(model => model.Department)</li>
+                                    <li><span>Институт</span><br />@Html.DisplayFor(model => model.Institute.Name)</li>
+                                    <li><span>Кафедра</span><br />@Html.DisplayFor(model => model.Department.Name)</li>
                                     <li><span>Группа</span>@Html.DisplayFor(model => model.Group)</li>
-                                    <li><span>Курс</span>@Html.DisplayFor(model => model.Course)</li>
+                                    <li><span>Курс</span>@Html.DisplayFor(model => model.Course.Num)</li>
                                     <li><span>Instagram</span>@Html.DisplayFor(model => model.InstagramAccount)</li>
                                     <li><span>Facebook</span>@Html.DisplayFor(model => model.FacebookAccount)</li>
                                 </ul>
@@ -105,5 +104,3 @@
     <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
     <a asp-action="Index">Назад</a>
 </div>
-
-

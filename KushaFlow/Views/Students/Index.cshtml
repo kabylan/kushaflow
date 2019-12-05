@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<KushaFlow.Models.Student>
 
 @{
-    ViewData["Title"] = "Студенты";
+    ViewData["Title"] = "Index";
 }
+
 
 <h1>Студенты</h1>
 
@@ -13,30 +14,29 @@
     <thead>
         <tr>
             <th>
-                Имя
-            </th>
-            <th>
-                Фамилия
+                ФИО
             </th>
             <th>
                 Группа
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr onclick="letsTarget(@item.Id);">
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Group)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr onclick="letsTarget(@item.Id);">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
@@ -48,5 +48,5 @@
         document.querySelector('#targetting').href = "Students/Details/" + a;
         document.querySelector('#targetting').click();
     }
-    
+
 </script>

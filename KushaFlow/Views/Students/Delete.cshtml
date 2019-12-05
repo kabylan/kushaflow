@@ -27,14 +27,14 @@
             @Html.DisplayNameFor(model => model.Institute)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Institute)
-        </dd>
+            @Html.DisplayFor(model => model.Institute.Name)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Department)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department)
-        </dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Group)
         </dt>
@@ -45,8 +45,8 @@
             @Html.DisplayNameFor(model => model.Course)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Course)
-        </dd>
+            @Html.DisplayFor(model => model.Course.Num)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Achievements)
         </dt>

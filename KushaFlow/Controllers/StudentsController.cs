@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KushaFlow.Models;
+using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
 
 namespace KushaFlow.Controllers
 {
@@ -58,11 +58,11 @@ namespace KushaFlow.Controllers
             return RedirectToAction("Index");
         }
 
-
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Students.ToListAsync());
+            var kushaFlowContext = _context.Students.Include(s => s.Course).Include(s => s.Department).Include(s => s.Institute);
+            return View(await kushaFlowContext.ToListAsync());
         }
 
         // GET: Students/Details/5
@@ -74,17 +74,24 @@ namespace KushaFlow.Controllers
             }
 
             var student = await _context.Students
+                .Include(s => s.Course)
+                .Include(s => s.Department)
+                .Include(s => s.Institute)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
                 return NotFound();
             }
+
             return View(student);
         }
 
         // GET: Students/Create
         public IActionResult Create()
         {
+            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Num");
+            ViewData["DepartmentId"] = new SelectList(_context.Departament, "Id", "Name");
+            ViewData["InstituteId"] = new SelectList(_context.Institute, "Id", "Name");
             return View();
         }
 
@@ -93,7 +100,7 @@ namespace KushaFlow.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Institute,Department,Group,Course,Achievements,InstagramAccount,FacebookAccount")] Student student)
+        public async Task<IActionResult> Create([Bind("Id,Name,Surname,ImgName,ImgPath,InstituteId,DepartmentId,Group,CourseId,Achievements,InstagramAccount,FacebookAccount")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -101,6 +108,9 @@ namespace KushaFlow.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Num", student.CourseId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departament, "Id", "Name", student.DepartmentId);
+            ViewData["InstituteId"] = new SelectList(_context.Institute, "Id", "Name", student.InstituteId);
             return View(student);
         }
 
@@ -117,9 +127,12 @@ namespace KushaFlow.Controllers
             {
                 return NotFound();
             }
-
+            
             ViewBag.UserId = id;
 
+            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Num", student.CourseId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departament, "Id", "Name", student.DepartmentId);
+            ViewData["InstituteId"] = new SelectList(_context.Institute, "Id", "Name", student.InstituteId);
             return View(student);
         }
 
@@ -128,7 +141,7 @@ namespace KushaFlow.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Institute,Department,Group,Course,Achievements,InstagramAccount,FacebookAccount")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,ImgName,ImgPath,InstituteId,DepartmentId,Group,CourseId,Achievements,InstagramAccount,FacebookAccount")] Student student)
         {
             if (id != student.Id)
             {
@@ -155,6 +168,9 @@ namespace KushaFlow.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Num", student.CourseId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departament, "Id", "Name", student.DepartmentId);
+            ViewData["InstituteId"] = new SelectList(_context.Institute, "Id", "Name", student.InstituteId);
             return View(student);
         }
 
@@ -167,6 +183,9 @@ namespace KushaFlow.Controllers
             }
 
             var student = await _context.Students
+                .Include(s => s.Course)
+                .Include(s => s.Department)
+                .Include(s => s.Institute)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
