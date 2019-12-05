@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using KushaFlow.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace KushaFlow
 {
@@ -16,8 +17,11 @@ namespace KushaFlow
     {
         public Startup(IConfiguration configuration)
         {
+
             Configuration = configuration;
+
         }
+
 
         public IConfiguration Configuration { get; }
 
@@ -26,8 +30,12 @@ namespace KushaFlow
         {
             services.AddControllersWithViews();
 
+            //string connection = Configuration.GetConnectionString("DefaultConnection");
+            //services.AddDbContext<KushaFlowContext>(options=>options.UseNpgsql(connection));
+            
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<KushaFlowContext>(options=>options.UseSqlServer(connection));
+            services.AddDbContext<KushaFlowContext>(options=>options.UseNpgsql(connection));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +61,11 @@ namespace KushaFlow
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            /*
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });*/
         }
     }
 }

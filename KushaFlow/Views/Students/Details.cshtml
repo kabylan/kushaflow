@@ -1,72 +1,109 @@
 ﻿@model KushaFlow.Models.Student
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = null;
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Institute)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Institute)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Department)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Group)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Group)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Course)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Course)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Achievements)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Achievements)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InstagramAccount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InstagramAccount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FacebookAccount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FacebookAccount)
-        </dd>
-    </dl>
+<div style="text-align:center">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Назад</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="/hahab/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/hahab/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/hahab/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/hahab/css/flaticon.css" />
+    <link rel="stylesheet" href="/hahab/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/hahab/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/hahab/css/style.css" />
+
+
+</head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+
+    <!-- Hero section start -->
+    <section class="hero-section spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero-text">
+                                <h2>@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Surname)</h2>
+                                <p>@Html.DisplayFor(model => model.Achievements)</p>
+                            </div>
+                            <div class="hero-info">
+                                <h2>Информация</h2>
+                                <ul>
+                                    <li><span>Институт</span>@Html.DisplayFor(model => model.Institute)</li>
+                                    <li><span>Кафедра</span>@Html.DisplayFor(model => model.Department)</li>
+                                    <li><span>Группа</span>@Html.DisplayFor(model => model.Group)</li>
+                                    <li><span>Курс</span>@Html.DisplayFor(model => model.Course)</li>
+                                    <li><span>Instagram</span>@Html.DisplayFor(model => model.InstagramAccount)</li>
+                                    <li><span>Facebook</span>@Html.DisplayFor(model => model.FacebookAccount)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <figure class="hero-image">
+                                <img src="~/StI/@Html.DisplayFor(model=>model.ImgName)" alt="5">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
+    <!-- Social links section start -->
+    <div class="social-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="social-link-warp">
+                        <div class="social-links">
+                            <a href="https://instagram.com/@Html.DisplayFor(model => model.InstagramAccount)"><i class="fa fa-instagram"></i></a>
+                            <a href="https://facebook.com/@Html.DisplayFor(model => model.FacebookAccount)"><i class="fa fa-facebook"></i></a>
+                        </div>
+                        <h2 class="hidden-md hidden-sm">Соц. аккаунты</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Social links section end -->
+    <!--====== Javascripts & Jquery ======-->
+    <script src="/hahab/js/jquery-2.1.4.min.js"></script>
+    <script src="/hahab/js/bootstrap.min.js"></script>
+    <script src="/hahab/js/owl.carousel.min.js"></script>
+    <script src="/hahab/js/magnific-popup.min.js"></script>
+    <script src="/hahab/js/circle-progress.min.js"></script>
+    <script src="/hahab/js/main.js"></script>
+</body>
+</html>
+
+<div style="text-align:center">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Назад</a>
 </div>
+
+

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<KushaFlow.Models.StudentIsWork>
+
+@{
+    ViewData["Title"] = "Работы";
+}
+
+<h1>Работы студентов</h1>
+<br />
+<p>Публикация и скачивание работ студентов(<b>СРС, ОТЧЁТ, КУРСОВОЙ</b>) из разных институтов</p>
+<ul>
+    <li>Институт Архитектуры и Дизайна</li>
+    <li>Институт Новых Информационных Технологий</li>
+    <li>Институт Транспорта и Экологии</li>
+    <li>Институт Строительства и Технологии</li>
+    <li>Институт Экономики и Менеджмента</li>
+</ul>
+
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkFormat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkFormat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadDate)
+                </td>
+                <td>
+                    <a asp-action="Download" asp-route-id="@item.Id">Скачать</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

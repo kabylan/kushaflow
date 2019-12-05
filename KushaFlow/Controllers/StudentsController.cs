@@ -6,17 +6,58 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KushaFlow.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace KushaFlow.Controllers
 {
     public class StudentsController : Controller
     {
         private readonly KushaFlowContext _context;
-
-        public StudentsController(KushaFlowContext context)
+        private readonly IHostingEnvironment _appEnvironment;
+        public StudentsController(KushaFlowContext context, IHostingEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
+
+        // GET
+        public IActionResult AddImage(int id)
+        {
+            ViewBag.UserId = id;
+            return View();
+        }
+
+        // POST
+        // Upload image
+        [HttpPost]
+        public async Task<IActionResult> AddImage(int id, IFormFile uploadedFile)
+        {
+            if (uploadedFile != null)
+            {
+                // path to folder StI
+                string path = "/StI/" + uploadedFile.FileName;
+                // save file in folder StI in dir wwwroot
+                using (FileStream fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream);
+                }
+
+                var student = await _context.Students.FindAsync(id);
+
+                if (student != null)
+                {
+                    student.ImgName = uploadedFile.FileName;
+                    student.ImgPath = path;
+                    _context.Students.Update(student);
+                }
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         // GET: Students
         public async Task<IActionResult> Index()
@@ -38,7 +79,6 @@ namespace KushaFlow.Controllers
             {
                 return NotFound();
             }
-
             return View(student);
         }
 
@@ -77,6 +117,9 @@ namespace KushaFlow.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.UserId = id;
+
             return View(student);
         }
 

@@ -13,6 +13,10 @@ namespace KushaFlow.Models
 
         public string Surname { get; set; }
 
+        public string ImgName { get; set; }
+
+        public string ImgPath { get; set; }
+
         public string Institute { get; set; }
 
         public string Department { get; set; }

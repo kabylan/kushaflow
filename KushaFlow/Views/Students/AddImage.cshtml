@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "AddImage";
+}
+
+<h1>AddImage</h1>
+
+<form asp-action="AddImage" asp-controller="Students" method="post" enctype="multipart/form-data">
+    <input type="number" name="id" value="@ViewBag.UserId" hidden/>
+    <input type="file" name="uploadedFile" /><br>
+    <input type="submit" value="Сохранить" />
+</form>

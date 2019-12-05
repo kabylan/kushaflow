@@ -1,71 +1,71 @@
 ﻿@model KushaFlow.Models.Student
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавить";
 }
 
-<h1>Create</h1>
+<h1>Добавить</h1>
 
-<h4>Student</h4>
+<h4>Студент</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label class="control-label">Имя</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
+                <label class="control-label">Фамилия</label>
                 <input asp-for="Surname" class="form-control" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Institute" class="control-label"></label>
+                <label class="control-label">Институт</label>
                 <input asp-for="Institute" class="form-control" />
                 <span asp-validation-for="Institute" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Department" class="control-label"></label>
+                <label class="control-label">Кафедра</label>
                 <input asp-for="Department" class="form-control" />
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Group" class="control-label"></label>
+                <label class="control-label">Группа</label>
                 <input asp-for="Group" class="form-control" />
                 <span asp-validation-for="Group" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Course" class="control-label"></label>
+                <label class="control-label">Курс</label>
                 <input asp-for="Course" class="form-control" />
                 <span asp-validation-for="Course" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Achievements" class="control-label"></label>
+                <label class="control-label">Достижения</label>
                 <input asp-for="Achievements" class="form-control" />
                 <span asp-validation-for="Achievements" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InstagramAccount" class="control-label"></label>
+                <label class="control-label">Instagram аккаунт</label>
                 <input asp-for="InstagramAccount" class="form-control" />
                 <span asp-validation-for="InstagramAccount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FacebookAccount" class="control-label"></label>
+                <label class="control-label">Facebook аккаунт</label>
                 <input asp-for="FacebookAccount" class="form-control" />
                 <span asp-validation-for="FacebookAccount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Добавить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад</a>
 </div>
 
 @section Scripts {

@@ -1,0 +1,73 @@
+﻿@model KushaFlow.Models.StudentIsWork
+
+@{
+    ViewData["Title"] = "Публикация труда";
+}
+
+<h1>Публикация труда</h1>
+<p>Поддерживаемые форматы для публикации/скачивания:</p>
+<b>Текстовые</b>
+<br />
+<ul>
+    <li>.pdf</li>
+    <li>.docx</li>
+    <li>.txt</li>
+    <li>.xlsx</li>
+    <li>.odt</li>
+    <li>.</li>
+</ul>
+<b>Изображение</b>
+<br />
+<ul>
+    <li>.jpeg</li>
+    <li>.png</li>
+    <li>.svg</li>
+    <li></li>
+</ul>
+<b>Архитектура</b>
+<br />
+<ul>
+    <li>.dwg</li>
+    <li></li>
+</ul>
+<b>Программирование</b>
+<br />
+<ul>
+    <li>.py</li>
+    <li>.php</li>
+    <li>.cs</li>
+    <li>.java</li>
+    <li>.js</li>
+    <li>.html</li>
+</ul>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Выберите файл</label>
+                <input type="file" name="UploadWork" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Опубликовать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+

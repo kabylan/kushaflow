@@ -3,5 +3,36 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Hello Asel!</h1>
+    <h1 class="display-4">Добро пожаловать!</h1>
 </div>
+
+<div>
+    <p>
+        <b>KushaFlow</b> это онлайн каталог студентов, который объеденяет студентов
+        из разных интститутов через социальные сети.
+    </p>
+    <p>
+        Ты можешь использовать <b>KushaFlow</b> для:
+    </p>
+    <ul>
+        <li>Поиска Студента в твоем факультете</li>
+        <li>Выяснить что изучает Студент</li>
+        <li>Студент в социальных сетях</li>
+    </ul>
+
+
+    <div class="text-center">
+        <a asp-controller="Students" asp-action="Index" class="btn btn-primary">Посмотреть</a>
+    </div>
+
+    <br />
+    <p>
+        Если ты студент и тебя нет в списке, то ты можешь добавить себя:
+    </p>
+
+
+    <div class="text-center">
+        <a asp-controller="Students" asp-action="Create">Добавить</a>
+    </div>
+</div>
+
