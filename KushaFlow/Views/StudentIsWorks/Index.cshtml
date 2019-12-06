@@ -6,7 +6,9 @@
 
 <h1>Работы студентов</h1>
 <br />
-<p>Публикация и скачивание работ студентов(<b>СРС, ОТЧЁТ, КУРСОВОЙ</b>) из разных институтов</p>
+<p>Публикация и скачивание <b>СРС, Отчётов, Курсовых проектов и других работ</b> 
+    студентов из разных институтов:
+</p>
 <ul>
     <li>Институт Архитектуры и Дизайна</li>
     <li>Институт Новых Информационных Технологий</li>
@@ -23,18 +25,8 @@
     <thead>
         <tr>
             <th>
-                №
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UploadDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DownloadsNum)
-            </th>
-            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -43,16 +35,7 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UploadDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DownloadsNum)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a>

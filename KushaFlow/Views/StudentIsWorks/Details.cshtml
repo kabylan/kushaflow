@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Подробности";
 }
+<!--
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+-->
 <h1>@Html.DisplayFor(model => model.Title)</h1>
 
 <div>
@@ -43,14 +44,18 @@
 </div>
 <br />
 <div>
-    <a asp-action="Download" asp-route-id="@Model.Id" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-download-alt"></span> Скачать
+    <a asp-action="Download" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">
+        Скачать
     </a>
-    <button type="button" class="btn btn-default btn-sm" onclick="copyLink()">
+    <button type="button" class="btn btn-dark btn-sm" onclick="copyLink()">
         <span class="glyphicon glyphicon-copy"></span>Скопировать ссылку
     </button>
+    <br />
+    <br />
     <a asp-action="Index">Назад</a>
 </div>
+<br />
+<br />
 
 
 
